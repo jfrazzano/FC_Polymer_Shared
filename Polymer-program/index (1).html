@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Untitled Document</title>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+  <link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/paper-dropdown/paper-dropdown.html">
+  <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html">
+  <link rel="import" href="bower_components/paper-input/paper-input.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-item/paper-item.html">
+  <link rel="import" href="bower_components/paper-material/paper-material.html">
+  <link rel="import" href="bower_components/iron-form/iron-form.html">
+  <link rel="import" href="bower_components/iron-pages/iron-pages.html">
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="bower_components/iron-icons/social-icons.html">
+  <link rel="import" href="bower_components/gold-email-input/gold-email-input.html">
+  <link rel="import" href="FC_elements/login-form.html">
+</head>
+
+<body unresolved class="fullbleed layout vertical">
+  <span id="browser-sync-binding"></span>
+  <template is="dom-bind" id="app">
+
+  <paper-drawer-panel id="paperDrawerPanel">
+    <paper-header-panel drawer mode="seam">
+          <!-- Drawer Toolbar -->
+    	<paper-toolbar id="drawerToolbar">
+          <span class="paper-font-title">Menu</span>
+    	</paper-toolbar>
+        
+        <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
+          <a data-route="home" href="/Polymer_3/#home">
+            <iron-icon icon="home"></iron-icon>
+            <span>Home</span>
+          </a>
+          
+          <a data-route="login" href="/Polymer_3/#login">
+            <iron-icon icon="social:person"></iron-icon>
+            
+            <span>Login/Logout</span>
+          </a>
+          
+          <a data-route="users" href="/Polymer_3/#users">
+            <iron-icon icon="info"></iron-icon>
+            <span>Users</span>
+          </a>
+
+          <a data-route="contact" href="/Polymer_3/#contact">
+            <iron-icon icon="mail"></iron-icon>
+            <span>Contact</span>
+          </a>
+        </paper-menu>
+    </paper-header-panel>
+    
+    <paper-header-panel main mode="waterfall">
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <span class="paper-font-title flex"><h1>Focused Coaching</h1></span>
+          <paper-menu-button halign="right">
+            <paper-icon-button icon="social:person"></paper-icon-button>
+              <!--<paper-menu class="menu">
+                <paper-item on-click="{{login}}" hidden?="{{!statusKnown || user}}">Login</paper-item>
+                <paper-item on-click="{{logout}}" hidden?="{{!statusKnown || !user}}">Logout</paper-item>
+              </paper-menu>-->
+          </paper-menu-button>
+          <template if="{{statusKnown}}">{{user.github.username}}</template>
+        </paper-toolbar>
+        <div class="content">
+        <iron-pages attr-for-selected="data-route" selected="{{route}}" style="padding:0px">
+
+            <section data-route="home" style="margin:0px">
+              HEY
+            </section>
+
+<section data-route="login">
+  <div class="horizontal center-center layout">
+  <div class="horizontal-section">
+	
+    <login-form></login-form>
+  </div>
+  </div>
+</section>
+
+            <section data-route="users">
+              <paper-material elevation="1">
+                <h2 class="paper-font-display2">Users</h2>
+                <p>This is the users section</p>
+                <button>Hey</button>
+              </paper-material>
+            </section>
+
+            <section data-route="user-info">
+              <paper-material elevation="1">
+                <h2 class="paper-font-display2">
+                User:<span>{{params.name}}</span>
+                </h2>
+                <div>This is <span>{{params.name}}</span>'s section</div>
+              </paper-material>
+            </section>
+
+            <section data-route="contact">
+              <paper-material elevation="1">
+                <h2 class="paper-font-display2">Contact</h2>
+                <p>This is the contact section</p>
+              </paper-material>
+            </section>
+
+          </iron-pages>
+        </div>
+    </paper-header-panel>
+ </paper-drawer-panel>
+</template>
+   <!-- build:js scripts/app.js -->
+  <script src="index.js"></script>
+  <!-- endbuild-->
+</body>
+</html>
